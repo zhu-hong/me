@@ -1,0 +1,50 @@
+::-webkit-scrollbar, ::-webkit-scrollbar-track, ::-webkit-scrollbar-corner {
+  width: .75rem;
+  background-color: transparent;
+}
+::-webkit-scrollbar-button {
+  display: none;
+}
+::-webkit-scrollbar-thumb {
+  background-color: hsla(245, 27%, 8%, 0.7);
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: hsla(245, 27%, 8%, 1);
+}
+
+body {
+	--bg-color: #212737;
+	--ct-color: #c2cee4;
+	--p-color: #fb7185;
+
+	min-width: 375px;
+	min-height: 100vh;
+  overflow-x: hidden;
+	overflow-y: auto;
+	background-color: var(--bg-color);
+	font-size: 18px;
+	color: var(--ct-color);
+  text-align: left;
+}
+
+main {
+  width: 100%;
+  max-width: 85ch;
+	padding: 1.5rem;
+	margin: 0 auto;
+}
+
+a[target=_blank] {
+	position: relative;
+	padding-right: 1.25rem;
+}
+a[target=_blank]::after {
+	content: "";
+	position: absolute;
+	top: 50%;
+	right: 0;
+	transform: translateY(-50%);
+	width: 1rem;
+	height: 1rem;
+	background-image: url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' aria-hidden='true' viewBox='0 0 24 24'%3E%3Cpath d='M0 0h24v24H0V0z' fill='none'%3E%3C/path%3E%3Cpath fill='%23aac8e4' d='M9 5v2h6.59L4 18.59 5.41 20 17 8.41V15h2V5H9z'%3E%3C/path%3E%3C/svg%3E");
+}

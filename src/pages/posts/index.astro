@@ -1,0 +1,43 @@
+---
+import Container from '@/layouts/Container.astro'
+import { getCollection } from 'astro:content'
+import dayjs from 'dayjs'
+
+let ps = await getCollection('posts')
+const posts = ps.map((p) => {
+  return {
+    ...p,
+    data: {
+      ...p.data,
+      pubDate: dayjs(p.data.pubDate).format('YYYY-MM-DD HH:MM'),
+      upDate: p.data.upDate ? dayjs(p.data.upDate).format('YYYY-MM-DD HH:MM') : '',
+    },
+  }
+})
+---
+
+<Container title="点东西">
+  {
+    posts.map((p) => {
+      return (
+        <div class="not-last:mb-8">
+          <a href={`/posts/${p.slug}`} class="text-$p-color link">{ p.data.title }</a>
+          <p class="text-sm italic my-2">{p.data.description}</p>
+          <div class="text-sm flex items-center gap-2">
+            <svg class="scale-90 inline-block h-6 w-6" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path fill="currentColor" d="M7 11h2v2H7zm0 4h2v2H7zm4-4h2v2h-2zm0 4h2v2h-2zm4-4h2v2h-2zm0 4h2v2h-2z"></path><path fill="currentColor" d="M5 22h14c1.103 0 2-.897 2-2V6c0-1.103-.897-2-2-2h-2V2h-2v2H9V2H7v2H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2zM19 8l.001 12H5V8h14z"></path></svg>
+            <span>{p.data.pubDate}</span>
+          </div>
+          <p class="text-sm mt-2">{p.data.upDate && `最近更新：${p.data.upDate}`}</p>
+        </div>
+      )
+    })
+  }
+</Container>
+
+<style>
+.link {
+  text-decoration: underline;
+  text-decoration-style: wavy;
+  text-underline-offset: 5px;
+}
+</style>

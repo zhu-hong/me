@@ -1,0 +1,139 @@
+---
+import Container from '@/layouts/Container.astro'
+import { CollectionEntry, getCollection } from 'astro:content'
+
+export async function getStaticPaths() {
+	const posts = await getCollection('posts')
+	return posts.map((post) => ({
+		params: { slug: post.slug },
+		props: post,
+	}))
+}
+type Props = CollectionEntry<'posts'>
+
+const post = Astro.props;
+const { Content } = await post.render()
+---
+
+<Container title={post.data.title}>
+	<h1 class="prose-title">{ post.data.title }</h1>
+	<div class="prose">
+		<Content></Content>
+	</div>
+</Container>
+
+<style lang="scss" is:global>
+.prose {
+	&-title {
+		font-size: 2.25rem;
+	}
+
+	&-title, h1, h2, h3, h4, h5, h6 {
+		margin-top: 2rem;
+		margin-bottom: 0.75rem;
+		font-weight: bold;
+		font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+	}
+
+	h1 {
+		font-size: 2.05rem;
+	}
+	
+	h2 {
+		font-size: 1.9rem;
+	}
+	
+	h3 {
+		font-size: 1.75rem;
+	}
+	
+	h4 {
+		font-size: 1.6rem;
+	}
+	
+	h5 {
+		font-size: 1.45rem;
+	}
+	
+	h6 {
+		font-size: 1.3rem;
+	}
+	
+	p {
+		margin: .75rem 0;
+	}
+
+	ul, ol {
+		padding-left: 2rem;
+		margin: .75rem 0;
+	}
+
+	li {
+		list-style: disc;
+		margin: .5rem 0;
+
+		&::marker {
+			color: var(--p-color),
+		}
+	}
+
+	code {
+		border-radius: 0.45rem;
+		background-color: rgba(52, 63, 96, 1);
+		padding: 0.25rem;
+		font-weight: 600;
+		margin: 0 .25rem;
+	}
+
+	.astro-code {
+		padding: 1rem;
+
+		code {
+			padding: 0;
+			margin: 0;
+			border-radius: 0;
+			background-color: transparent;
+			font-weight: inherit;
+			font-size: inherit;
+		}
+	}
+
+	table {
+		width: 100%;
+
+		thead {
+			border-bottom-width: 1px;
+			border-bottom-color: var(--p-color);
+		}
+
+		th, td {
+			border-width: 1px;
+			border-color: var(--p-color);
+			padding: 0.5rem;
+		}
+
+		th {
+			font-weight: 500;
+		}
+	}
+
+	blockquote {
+		padding-left: 1.5rem;
+		border-left: 0.25rem solid var(--p-color);
+		margin: 1rem 0;
+	}
+
+	a {
+		text-decoration: underline;
+		text-decoration-style: dashed;
+		text-underline-offset: .5rem;
+		font-weight: 500;
+		margin: 0 .5rem;
+
+		&:hover {
+			color: var(--p-color);
+			text-decoration-style: solid;
+		}
+	}
+}
+</style>

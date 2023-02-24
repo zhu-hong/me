@@ -1,0 +1,39 @@
+---
+const { pathname } = Astro.url
+---
+<header>
+  <a role="link" href="/" class="title inline-flex items-center gap-2 hover:text-$p-color">这里写什么好呢</a>
+  <div class="links gap-4">
+    <a href="/posts" class:list={ { 'active': pathname === '/posts' } }>一点东西</a>
+    <a href="https://github.com/zhu-hong" target="_blank" class="fontmono">GITHUB</a>
+  </div>
+</header>
+
+<style lang="scss">
+.title {
+	font-size: 1.75rem;
+	font-weight: bold;
+	margin: 1rem 0;
+}
+.links {
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: var(--p-color);
+  display: flex;
+  align-items: center;
+  a {
+    &:hover {
+      color: var(--p-color);
+    }
+    &.active {
+      text-decoration: underline;
+      text-decoration-style: wavy;
+      text-underline-offset: .5rem;
+      font-weight: 500;
+      color: var(--p-color);
+    }
+  }
+}
+</style>

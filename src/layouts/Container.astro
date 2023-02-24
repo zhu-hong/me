@@ -1,0 +1,33 @@
+---
+import Footer from '@/components/Footer.astro';
+import Header from '@/components/Header.astro';
+import '@/styles/reset.css'
+import '@/styles/style.css'
+
+export interface Props {
+	title?: string;
+	description?: string;
+	pubDate?: string;
+	updatedDate?: string;
+	heroImage?: string;
+}
+
+const {
+  title,
+} = Astro.props;
+---
+
+<html lang="zh">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width" />
+		<title>{title}</title>
+	</head>
+	<body>
+		<main>
+			<Header />
+			<slot />
+			<Footer />
+		</main>
+	</body>
+</html>
