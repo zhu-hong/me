@@ -10,10 +10,12 @@
 		"astro": "astro"
 	},
 	"dependencies": {
+		"@astrojs/mdx": "0.17.2",
 		"astro": "2.0.15",
 		"dayjs": "1.11.7",
 		"remark-collapse": "0.1.2",
 		"remark-toc": "8.0.1",
+		"rollup": "3.17.3",
 		"sass": "1.58.3",
 		"unocss": "0.50.1",
 		"vite": "4.1.4"

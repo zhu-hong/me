@@ -4,7 +4,8 @@ const { pathname } = Astro.url
 <header>
   <a role="link" href="/" class="title inline-flex items-center gap-2 hover:text-$p-color">这里写什么好呢</a>
   <div class="links gap-4">
-    <a href="/posts" class:list={ { 'active': pathname === '/posts' } }>一点东西</a>
+    <a href="/posts" class:list={ { 'active': pathname === '/posts' } }>Post</a>
+    <a href="/posts/snippets" class="fontmono" class:list={ { 'active': pathname === '/posts/snippets' } }>Snippet</a>
     <a href="https://github.com/zhu-hong" target="_blank" class="fontmono">GITHUB</a>
   </div>
 </header>
