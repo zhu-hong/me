@@ -1,10 +1,10 @@
 ---
-title: "Flutter环境搭建"
-description: "记录Flutter环境搭建流程"
-pubDate: "2023-2-24 23:36"
+title: Flutter环境搭建
+desc: 记录Flutter环境搭建流程
+date: "2023-2-24 23:36"
 ---
 
-## Table of contents
+[[toc]]
 
 ## 资源准备
 
@@ -19,9 +19,9 @@ pubDate: "2023-2-24 23:36"
 - 准备`JDK`，关于JDK版本我完全不懂，听说用得最多的好像是`JDK8`，但是我下载用下来失败了，可能是版本太低，然后我下了个`JDK11`可以用，我是在<a href="https://repo.huaweicloud.com/java/jdk/" target="_blank">这里</a>下的，官网下载还得注册账号登录太🥛🖊啦，我选择放弃，同样解压把bin目录添加到环境变量，添加环境变量`JAVA_HOME`不是bin
 - <a href="https://developer.android.com/studio" target="_blank">Android Studio</a>，我还是习惯用vscode开发，AS用来管理安卓相关的SDK和Device
 
-## 开始来真的
+## 开始安装
 
-- 运行`doctor`命令逗号，这会帮你下载`Dark SDK`等一些库和工具<br>*Flutter任何命令加上参数 `-v` 可以得到更详细的消息*
+- 运行`doctor`命令，这会帮你下载`Dark SDK`等一些库和工具<br>*Flutter任何命令加上参数 `-v` 可以得到更详细的消息*
 ```
 flutter doctor
 ```
@@ -32,14 +32,15 @@ flutter doctor
 ## 可能用得到的
 
 想要在USB连接的Android物理设备上调试，其实非常简单，打开设计开发者设置，再打开USB调试就行了
+```sh
+flutter pub cache repair # 整理pub包
+flutter create --platform=android flutter_dev # 创建指定平台的应用程序
+flutter run --target=./lib/main_staging.dart -v # 运行指定入口文件
+flutter build apk # 打包apk
 ```
-flutter pub cache repair // 整理pub包
-flutter create --platform=android flutter_dev // 创建指定平台的应用程序
-flutter run --target=./lib/main_staging.dart -v // 运行指定入口文件
-flutter build apk // 打包apk
-```
-vscode lunch.json
+
 ```json
+// vscode lunch.json
 {
   // Use IntelliSense to learn about possible attributes.
   // Hover to view descriptions of existing attributes.
@@ -55,6 +56,7 @@ vscode lunch.json
   ]
 }
 ```
+
 切换flutter版本，打开vscode切换到你想要的版本的git tag，然后再运行一遍`flutter doctor`
 
 卡在 *Running Gradle task 'assembleDebug'...* 属于正常现象，你可能得使用科学上网解决

@@ -1,13 +1,11 @@
 ---
-title: "代码片段"
-description: "一些实用代码片段"
-pubDate: "2023-2-27 20:17"
-
-setup: |
-  import SvgInCanvas from '../../components/SvgInCanvas.astro'
+title: 代码片段
+desc: 记录不想忘记的代码片段
+date: 2023-2-28 21:19
+update: 2023-2-28 22:13
 ---
 
-## Table of contents
+[[toc]]
 
 ## SVG Path 画圆公式
 
@@ -21,7 +19,6 @@ setup: |
       a R,R 0 1,0 -(R * 2),0
     "
 />
-
 ```
 
 ## SVG2URI
@@ -40,4 +37,9 @@ function encodeSvg(svg: string) {
 
 const dataUri = `data:image/svg+xml;utf8,${encodeSvg(svg)}`
 ```
-<SvgInCanvas></SvgInCanvas>
+
+> 来源 [聊聊纯 CSS 图标](https://antfu.me/posts/icons-in-pure-css-zh)
+
+<ClientOnly>
+  <SvgInCanvas />
+</ClientOnly>

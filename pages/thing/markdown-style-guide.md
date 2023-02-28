@@ -1,11 +1,10 @@
 ---
-title: "Markdown样式指南"
-description: "Here is a sample of some basic Markdown syntax that can be used when writing Markdown content in Astro."
-pubDate: "2023-2-24 21:3"
-upDate: "2023-2-24 21:29"
+title: Markdown样式指南
+desc: Here is a sample of some basic Markdown syntax that can be used when writing Markdown content in Astro.
+date: 2023-2-24 21:03
 ---
 
-这是一个帮助你在Astro中编写Markdown的简单语法示例
+> 这是一个帮助你在Astro中编写Markdown的简单语法示例
 
 ## Headings
 
@@ -36,6 +35,8 @@ Itatur? Quiatae cullecum rem ent aut odis in re eossequodi nonsequ idebis ne sap
 ## Link
 
 [头像](/avatar.jpg)
+
+[新窗口](https://github.com)
 
 ## Blockquotes
 
@@ -98,7 +99,7 @@ The blockquote element represents content that is quoted from another source, op
   - Milk
   - Cheese
 
-## Other Elements — abbr, sub, sup, kbd, mark
+## Other Elements — abbr、sub、sup、kbd、mark
 
 <abbr title="Graphics Interchange Format">GIF</abbr> is a bitmap image format.
 
