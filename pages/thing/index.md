@@ -1,5 +1,5 @@
 ---
-title: ting
+title: 东西
 ---
 
 <Things />
