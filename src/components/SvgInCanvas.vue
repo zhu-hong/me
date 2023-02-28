@@ -52,9 +52,7 @@ function onChange(e) {
 </script>
 
 <template>
-  <div class="flex items-center">
-    <span>试一试</span>
-    <input type="file" name="uld" title="试试" @change="onChange" accept=".svg">
-  </div>
+  <p>这样能很方便得将SVG画在Canvas上，这样就能下载成常见的图片格式，试一试</p>
+  <input type="file" name="uld" title="试试" @change="onChange" accept=".svg">
   <canvas ref="canvas" :width="size.w" :height="size.h" class="mx-auto"></canvas>
 </template>

@@ -16,7 +16,6 @@ const update = ref('')
 if(frontmatter.update) {
 	update.value = dayjs(frontmatter.date).fromNow()
 }
-
 </script>
 
 <template>
