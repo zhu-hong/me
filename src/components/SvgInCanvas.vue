@@ -52,7 +52,7 @@ function onChange(e) {
 </script>
 
 <template>
-  <p>这样能很方便得将SVG画在Canvas上，这样就能下载成常见的图片格式，试一试</p>
+  <p>有了这个，SVG可以在体积不变的情况下画在Canvas上（base64会使资源大小最多变大三分之一左右），试一试</p>
   <input type="file" name="uld" title="试试" @change="onChange" accept=".svg">
   <canvas ref="canvas" :width="size.w" :height="size.h" class="mx-auto"></canvas>
 </template>
