@@ -79,6 +79,7 @@ if(frontmatter.update) {
 	
 	p {
 		margin: 0.75rem 0 2rem 0;
+		line-height: 1.75;
 	}
 
 	ul, ol {
@@ -92,11 +93,10 @@ if(frontmatter.update) {
 	}
 
 	code:not([class]) {
-		border-radius: 0.45rem;
 		background-color: rgba(52, 63, 96, 1);
-		padding: 0.25rem;
-		font-weight: 600;
-		margin: 0 .25rem;
+		padding: 0.2rem;
+		font-weight: 500;
+		margin: 0 .2rem;
 	}
 
 	.shiki {
