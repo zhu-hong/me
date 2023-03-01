@@ -1,5 +1,5 @@
 ---
-title: 代码片段
+title: Snippet
 desc: 记录不想忘记的代码片段
 date: 2023-2-28 21:19
 update: 2023-3-1 8:53
