@@ -11,6 +11,7 @@ const router= useRouter()
 
 const things = router.getRoutes()
               .filter((p) => p.path.startsWith('/thing') && !p.path.endsWith('.html') && p.meta.frontmatter.date)
+              .sort((a, b) => +new Date(b.meta.frontmatter.date) - +new Date(a.meta.frontmatter.date))
               .map((t) => {
                 const cdate = new Date(t.meta.frontmatter.date)
                 const now = new Date()
@@ -32,8 +33,6 @@ const things = router.getRoutes()
                   date,
                 }
               })
-
-console.log(things)
 </script>
 
 <template>
