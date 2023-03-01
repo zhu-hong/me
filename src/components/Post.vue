@@ -14,7 +14,7 @@ const date = dayjs(frontmatter.date).format('YYYY-MM-DD HH:MM')
 const update = ref('')
 
 if(frontmatter.update) {
-	update.value = dayjs(frontmatter.date).fromNow()
+	update.value = dayjs(frontmatter.update).fromNow()
 }
 </script>
 
