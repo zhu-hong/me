@@ -38,6 +38,6 @@ function encodeSvg(svg: string) {
 const dataUri = `data:image/svg+xml;utf8,${encodeSvg(svg)}`
 ```
 
-> 来源 [聊聊纯 CSS 图标](https://antfu.me/posts/icons-in-pure-css-zh)
+> 引用 [聊聊纯 CSS 图标](https://antfu.me/posts/icons-in-pure-css-zh)
 
 <SvgInCanvas />
