@@ -71,6 +71,15 @@ date: 2023-3-7 11:02
 2. 预检请求(OPTIONS)的本质是询问服务端被允许请求的格式
 3. 简单请求不会触发预检请求
 
+## 关键响应头
+
+```
+Access-Control-Allow-Origin // 运行跨域的源
+Access-Control-Allow-Methods // 允许请求的方法
+Access-Control-Allow-Headers // 运行的请求报文头
+Access-Control-Expose-Headers // 额外的响应报文头
+```
+
 ## 参考
 
 > [跨源资源共享（CORS） - HTTP | MDN (mozilla.org)](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/CORS)
