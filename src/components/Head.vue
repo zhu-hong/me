@@ -6,6 +6,7 @@
     <div class="flex items-center gap-4">
       <a class="text-white font-medium" href="/thing">东西</a>
       <a class="text-white font-medium" href="/snippet">Snippet</a>
+      <a class="text-white font-medium" href="/config">Config</a>
     </div>
   </header>
 </template>

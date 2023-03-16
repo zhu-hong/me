@@ -1,0 +1,56 @@
+---
+title: Config
+desc: 一些配置
+date: 2023-3-16 12:41
+---
+
+[[toc]]
+
+## npm
+
+```sh
+npm config set save-exact true
+npm config set save-prefix ''
+
+NODEJS_ORG_MIRROR="https://cdn.npmmirror.com/binaries/node"
+NVM_NODEJS_ORG_MIRROR="https://cdn.npmmirror.com/binaries/node"
+PHANTOMJS_CDNURL="https://cdn.npmmirror.com/binaries/phantomjs"
+CHROMEDRIVER_CDNURL="https://cdn.npmmirror.com/binaries/chromedriver"
+OPERADRIVER_CDNURL="https://cdn.npmmirror.com/binaries/operadriver"
+ELECTRON_MIRROR="https://cdn.npmmirror.com/binaries/electron/"
+ELECTRON_BUILDER_BINARIES_MIRROR="https://cdn.npmmirror.com/binaries/electron-builder-binaries"
+SASS_BINARY_SITE="https://cdn.npmmirror.com/binaries/node-sass"
+SWC_BINARY_SITE="https://cdn.npmmirror.com/binaries/node-swc"
+NWJS_URLBASE="https://cdn.npmmirror.com/binaries/nwjs/v"
+PUPPETEER_DOWNLOAD_HOST="https://cdn.npmmirror.com/binaries"
+PLAYWRIGHT_DOWNLOAD_HOST="https://cdn.npmmirror.com/binaries/playwright"
+SENTRYCLI_CDNURL="https://cdn.npmmirror.com/binaries/sentry-cli"
+SAUCECTL_INSTALL_BINARY_MIRROR="https://cdn.npmmirror.com/binaries/saucectl"
+RE2_DOWNLOAD_MIRROR="https://cdn.npmmirror.com/binaries/node-re2"
+RE2_DOWNLOAD_SKIP_PATH="true"
+npm_config_keytar_binary_host="https://cdn.npmmirror.com/binaries/keytar"
+npm_config_sharp_binary_host="https://cdn.npmmirror.com/binaries/sharp"
+npm_config_sharp_libvips_binary_host="https://cdn.npmmirror.com/binaries/sharp-libvips"
+npm_config_robotjs_binary_host="https://cdn.npmmirror.com/binaries/robotjs"
+node_sqlite3_binary_host_mirror="https://cdn.npmmirror.com/binaries/sqlite3"
+```
+
+## VSCode
+
+```json
+
+```
+
+## zsh
+
+```sh
+ZSH_THEME="robbyrussell"
+
+# flutter
+export PUB_HOSTED_URL="https://pub.flutter-io.cn"
+export FLUTTER_STORAGE_BASE_URL="https://storage.flutter-io.cn"
+export FLUTTER_GIT_URL="https://mirrors.tuna.tsinghua.edu.cn/git/flutter-sdk.git"
+
+# adb
+export PATH="$PATH:/Users/wingoht/Library/Android/sdk/platform-tools"
+```
