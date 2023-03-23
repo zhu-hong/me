@@ -42,47 +42,11 @@ const dataUri = `data:image/svg+xml;utf8,${encodeSvg(svg)}`
 
 <SvgInCanvas />
 
-## Flutter获取图片加载成功/失败动作
+## flutter
 
-```dart
-import 'package:flutter/material.dart';
-
-class ImageFull extends StatefulWidget {
-  const ImageFull({super.key, required this.url});
-
-  final String url;
-
-  @override
-  State<ImageFull> createState() => _ImageFullState();
-}
-
-class _ImageFullState extends State<ImageFull> {
-  late dynamic _image = const CircularProgressIndicator();
-
-  late final finalimg = Image.network(widget.url);
-
-  @override
-  void initState() {
-    super.initState();
-
-    ImageStream imageStream = finalimg.image.resolve(ImageConfiguration.empty);
-    imageStream.addListener(ImageStreamListener(
-      (_, __) {
-        setState(() {
-          _image = finalimg;
-        });
-      },
-      onError: (_, __) {
-        setState(() {
-          _image = Image.asset('images/image-error.png');
-        });
-      },
-    ));
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return _image;
-  }
-}
+```sh
+flutter pub cache repair # 整理pub包
+flutter create --platform=android flutter_dev # 创建指定平台的应用程序
+flutter run --target=./lib/main_staging.dart -v # 运行指定入口文件
+flutter build apk # 打包apk
 ```

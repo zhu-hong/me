@@ -26,18 +26,10 @@ date: "2023-2-24 23:36"
 flutter doctor
 ```
 - 根据提示安装一些东西可能有
-  - 在AS中安装`Android SDK`、`commandline tool`...等，它会推荐你，默认就行
+  - 在AS中安装`Android SDK`、`commandline-tool`、`platform-tool`、`build-tool`...等，它会推荐你，默认就行
 - 到这其实就差不多了
 
 ## 可能用得到的
-
-想要在USB连接的Android物理设备上调试，其实非常简单，打开设计开发者设置，再打开USB调试就行了
-```sh
-flutter pub cache repair # 整理pub包
-flutter create --platform=android flutter_dev # 创建指定平台的应用程序
-flutter run --target=./lib/main_staging.dart -v # 运行指定入口文件
-flutter build apk # 打包apk
-```
 
 ```json
 // vscode lunch.json
