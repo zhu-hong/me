@@ -14,6 +14,8 @@
 
 body {
 	--p-color: #ff69b4;
+  --scb-color: rgba(107, 144, 128, 0.6);
+  --scbh-color: #6B9080;
 
 	min-width: 375px;
 	min-height: 100vh;
@@ -30,8 +32,6 @@ html.dark {
 	--ct-color: #b0b0b0;
   --ct-lk-color: #ffffff;
   --ct-lkb-color: rgba(255, 255, 255, .3);
-  --scb-color: rgba(85, 85, 85, 0.6);
-  --scbh-color: #555555;
   --code-color: #343f60;
 }
 
@@ -40,8 +40,6 @@ html:not(.dark) {
   --ct-color: #212121;
   --ct-lk-color: #000000;
   --ct-lkb-color: rgba(0, 0, 0, .3);
-  --scb-color: rgba(107, 144, 128, 0.6);
-  --scbh-color: #6B9080;
   --code-color: #abb4c7;
 }
 
