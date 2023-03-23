@@ -34,6 +34,17 @@ let conned = false
 const connBtn = document.getElementById('conn')
 const disconnBtn = document.getElementById('disconn')
 
+connBtn.addEventListener('click', bindlisten)
+disconnBtn.addEventListener('click', unlisten)
+
+navigator.serial.addEventListener('disconnect', unlisten)
+
+function bindlisten() {
+  if(conned) return
+
+  listen()
+}
+
 async function listen() {
   if(!("serial" in navigator)) return
 
@@ -41,15 +52,15 @@ async function listen() {
     // 请求连接
     port = await navigator.serial.requestPort()
   }
-
+  
   /**
    * @see https://developer.mozilla.org/en-US/docs/Web/API/SerialPort/open#parameters
    * 建立一个通信通道，配置见链接，可以关注一下`bufferSize`
-  */
- await port.open({ baudRate: 9600 })
- conned = true
+   */
+  await port.open({ baudRate: 9600 })
+  conned = true
 
-  // 读取设备发来的数据的reader
+  // 读取设备发来的信息
   reader = port.readable.getReader()
 
   while (port.readable) {
@@ -65,15 +76,9 @@ async function listen() {
     }
     console.log(string)
 
-    /**
-     * 释放通信通道，开始一个新buffer
-     * 因为buffer（默认255）累积满了的话，数据会分两个read
-     * 释放buffer的方法没找到
-    */
+    // 释放串口 避免buffersize溢出导致读取的数据分两次读取导致断层 未找到释放buffer的方法
     await reader.cancel()
-    await port.readable.cancel()
     await port.close()
-    // 重复监听
     listen()
     break
   }
@@ -83,18 +88,10 @@ async function unlisten() {
   if(port === null) return
 
   await reader.cancel()
-  await port.readable.cancel()
   await port.close()
   port = null
   reader = null
 
   conned = false
 }
-
-connBtn.addEventListener('click', () => {
-  if(conned) return
-
-  listen()
-})
-disconnBtn.addEventListener('click', unlisten)
 ```
