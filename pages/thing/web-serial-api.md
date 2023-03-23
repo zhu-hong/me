@@ -2,7 +2,7 @@
 title: Web Serial API
 desc: 探索Web Serial API的简易使用，web网站与硬件设备交互
 date: 2023-3-15 14:56
-update: 2023-3-23 11:13
+update: 2023-3-23 11:18
 ---
 
 [[toc]]
@@ -40,14 +40,14 @@ async function listen() {
   if(!port) {
     // 请求连接
     port = await navigator.serial.requestPort()
-    conned = true
   }
 
   /**
    * @see https://developer.mozilla.org/en-US/docs/Web/API/SerialPort/open#parameters
    * 建立一个通信通道，配置见链接，可以关注一下`bufferSize`
   */
-  await port.open({ baudRate: 9600 })
+ await port.open({ baudRate: 9600 })
+ conned = true
 
   // 读取设备发来的数据的reader
   reader = port.readable.getReader()
