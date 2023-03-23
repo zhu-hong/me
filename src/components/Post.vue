@@ -1,6 +1,7 @@
 <script setup lang='ts'>
 import { ref } from 'vue'
 import dayjs from 'dayjs'
+import { useHead } from '@vueuse/head';
 
 const { frontmatter } = defineProps({
   frontmatter: {
@@ -16,6 +17,15 @@ const update = ref('')
 if(frontmatter.update) {
 	update.value = dayjs(frontmatter.update).fromNow()
 }
+
+useHead({
+  meta: [
+    {
+      name: 'description',
+      content: frontmatter.desc,
+    },
+  ],
+})
 </script>
 
 <template>
