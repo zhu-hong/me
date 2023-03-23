@@ -155,11 +155,11 @@ html:not(.dark) .shiki:first-child {
 
 	a {
 		font-weight: 500;
-		color: var(--ct-link-color);
+		color: var(--lk-color);
 		transition: all ease-in-out .3s;
 		border-bottom-style: solid;
 		border-bottom-width: 1px;
-		border-bottom-color: var(--ct-lkb-color);
+		border-bottom-color: var(--lkb-color);
 		display: inline-block;
 		margin: 0 .25rem;
 

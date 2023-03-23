@@ -30,16 +30,16 @@ body {
 html.dark {
 	--bg-color: #262626;
 	--ct-color: #b0b0b0;
-  --ct-lk-color: #ffffff;
-  --ct-lkb-color: rgba(255, 255, 255, .3);
+  --lk-color: #ffffff;
+  --lkb-color: rgba(255, 255, 255, .3);
   --code-color: #343f60;
 }
 
 html:not(.dark) {
   --bg-color: #F2F2F2 ;
   --ct-color: #212121;
-  --ct-lk-color: #000000;
-  --ct-lkb-color: rgba(0, 0, 0, .3);
+  --lk-color: #000000;
+  --lkb-color: rgba(0, 0, 0, .3);
   --code-color: #abb4c7;
 }
 
