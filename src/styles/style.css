@@ -32,6 +32,7 @@ html.dark {
   --ct-lkb-color: rgba(255, 255, 255, .3);
   --scb-color: rgba(85, 85, 85, 0.6);
   --scbh-color: #555555;
+  --code-color: #343f60;
 }
 
 html:not(.dark) {
@@ -41,6 +42,7 @@ html:not(.dark) {
   --ct-lkb-color: rgba(0, 0, 0, .3);
   --scb-color: rgba(107, 144, 128, 0.6);
   --scbh-color: #6B9080;
+  --code-color: #abb4c7;
 }
 
 main {

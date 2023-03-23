@@ -109,7 +109,7 @@ html:not(.dark) .shiki:first-child {
 	}
 
 	code:not([class]) {
-		background-color: rgba(52, 63, 96, 1);
+		background-color: var(--code-color);
 		padding: 0.2rem;
 		font-weight: 500;
 		margin: 0 .2rem;
