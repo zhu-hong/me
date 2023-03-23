@@ -41,6 +41,12 @@ if(frontmatter.update) {
 </template>
 
 <style lang="postcss">
+html.dark .shiki:last-child {
+	display: none;
+}
+html:not(.dark) .shiki:first-child {
+	display: none;
+}
 :where(.prose) {
 	h1, h2, h3, h4, h5, h6 {
 		&:not(:first-child) {
@@ -98,14 +104,9 @@ if(frontmatter.update) {
 		font-weight: 500;
 		margin: 0 .2rem;
 	}
-
 	.shiki {
 		padding: 1rem;
 		overflow: auto;
-
-		&:last-child {
-			display: none;
-		}
 	}
 
 	pre:not([class]) code, .shiki-container code {
@@ -144,9 +145,11 @@ if(frontmatter.update) {
 
 	a {
 		font-weight: 500;
-		color: #ffffff;
-		transition: border ease-in-out .3s;
-		border-bottom: solid 1px rgba(115, 115, 115, .3);
+		color: var(--ct-link-color);
+		transition: all ease-in-out .3s;
+		border-bottom-style: solid;
+		border-bottom-width: 1px;
+		border-bottom-color: var(--ct-lkb-color);
 		display: inline-block;
 		margin: 0 .25rem;
 
