@@ -45,8 +45,9 @@ const dataUri = `data:image/svg+xml;utf8,${encodeSvg(svg)}`
 ## flutter
 
 ```sh
-flutter pub cache repair # 整理pub包
-flutter create --platform=android flutter_dev # 创建指定平台的应用程序
-flutter run --target=./lib/main_staging.dart -v # 运行指定入口文件
-flutter build apk # 打包apk
+flutter pub cache repair
+flutter create --platform=android flutter_dev
+flutter run --target=./lib/main_staging.dart
+flutter build apk
+flutter build apk --target-platform android-arm64
 ```
