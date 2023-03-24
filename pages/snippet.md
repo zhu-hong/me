@@ -51,3 +51,15 @@ flutter run --target=./lib/main_staging.dart
 flutter build apk
 flutter build apk --target-platform android-arm64
 ```
+
+## 获取某年某月有多少天
+
+```js
+/**
+ * 问的cahtgpt
+ * 月份从1开始
+*/
+function getDates(year, month) {
+  return new Date(year, month, 0).getDate()
+}
+```
