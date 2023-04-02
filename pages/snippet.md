@@ -45,11 +45,13 @@ const dataUri = `data:image/svg+xml;utf8,${encodeSvg(svg)}`
 ## flutter
 
 ```sh
-flutter pub cache repair
-flutter create --platform=android flutter_dev
+flutter pub cache repair # 整理pub包,重新下载所有使用过的版本
+flutter pub cache clean # 删除pub包缓存
+flutter create --platform=android --org=cn.zhudapao flutter_dev
 flutter run --target=./lib/main_staging.dart
 flutter build apk
 flutter build apk --target-platform android-arm64
+flutter run --dart-define-from-file=dev.json # 读取json注入环境变量
 ```
 
 ## 获取某年某月有多少天
@@ -62,4 +64,9 @@ flutter build apk --target-platform android-arm64
 function getDates(year, month) {
   return new Date(year, month, 0).getDate()
 }
+```
+
+## 卸载任何安卓应用
+```sh
+adb shell pm uninstall -k --user 0 com.miui.voiceassist # 卸载小爱同学
 ```
