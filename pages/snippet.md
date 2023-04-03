@@ -54,6 +54,36 @@ flutter build apk --target-platform android-arm64
 flutter run --dart-define-from-file=dev.json # 读取json注入环境变量
 ```
 
+### canvas2image
+
+```dart
+import 'dart:ui' as ui;
+import 'package:image_gallery_saver/image_gallery_saver.dart';
+import 'package:qr_flutter/qr_flutter.dart';
+
+void canvas2image() async {
+  // 以这个给二维码图片加白边后保存到相册为例
+  final qr = await QrPainter(
+    gapless: true,
+    data: 'qrcode content',
+    version: QrVersions.auto,
+    emptyColor: Colors.white,
+    color: Colors.black,
+  ).toImage(800);
+
+  final PictureRecorder pictureRecorder = PictureRecorder();
+
+  final canvas = Canvas(pictureRecorder);
+  canvas.drawRect(Offset.zero & Size(850, 850), Paint()..isAntiAlias = true..style = PaintingStyle.fill..color = Colors.white);
+  canvas.drawImage(qr, Offset(25, 25), Paint());
+
+  final pic = await pictureRecorder.endRecording().toImage(850, 850);
+  final bytes = await pic.toByteData(format: ui.ImageByteFormat.png);
+
+  ImageGallerySaver.saveImage(Uint8List.view(bytes.buffer));
+}
+```
+
 ## 获取某年某月有多少天
 
 ```js
