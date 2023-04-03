@@ -84,6 +84,61 @@ void canvas2image() async {
 }
 ```
 
+
+### 输入限制
+
+```dart
+FilteringTextInputFormatter.deny(RegExp('[ ]')) // 不能输入空格
+FilteringTextInputFormatter(RegExp('[0-9.]'), allow: true) // 只能输入数字和小数点
+
+DigitFilter(digit: 2) // 小数点后只能有两位
+class DigitFilter extends TextInputFormatter {
+  static const defaultDouble = 0.001;
+
+  // 允许的小数位数，-1代表不限制位数
+  int digit;
+
+  DigitFilter({this.digit = -1});
+  static double strToFloat(String str, [double defaultValue = defaultDouble]) {
+    try {
+      return double.parse(str);
+    } catch (e) {
+      return defaultValue;
+    }
+  }
+
+  // 获取目前的小数位数
+  static int getValueDigit(String value) {
+    if (value.contains(".")) {
+      return value.split(".")[1].length;
+    } else {
+      return -1;
+    }
+  }
+
+  @override
+  TextEditingValue formatEditUpdate(TextEditingValue oldValue, TextEditingValue newValue) {
+    String value = newValue.text;
+    int selectionIndex = newValue.selection.end;
+    if (value == ".") {
+      value = "0.";
+      selectionIndex++;
+    } else if (value == "-") {
+      value = "-";
+      selectionIndex++;
+    } else if (value != "" && value != defaultDouble.toString() && strToFloat(value, defaultDouble) == defaultDouble || getValueDigit(value) > digit) {
+      value = oldValue.text;
+      selectionIndex = oldValue.selection.end;
+    }
+
+    return TextEditingValue(
+      text: value,
+      selection: TextSelection.collapsed(offset: selectionIndex),
+    );
+  }
+}
+```
+
 ## 获取某年某月有多少天
 
 ```js
