@@ -54,6 +54,91 @@ flutter build apk --target-platform android-arm64
 flutter run --dart-define-from-file=dev.json # 读取json注入环境变量
 ```
 
+### canvas2image
+
+```dart
+import 'dart:ui' as ui;
+import 'package:image_gallery_saver/image_gallery_saver.dart';
+import 'package:qr_flutter/qr_flutter.dart';
+
+void canvas2image() async {
+  // 以这个给二维码图片加白边后保存到相册为例
+  final qr = await QrPainter(
+    gapless: true,
+    data: 'qrcode content',
+    version: QrVersions.auto,
+    emptyColor: Colors.white,
+    color: Colors.black,
+  ).toImage(800);
+
+  final PictureRecorder pictureRecorder = PictureRecorder();
+
+  final canvas = Canvas(pictureRecorder);
+  canvas.drawRect(Offset.zero & Size(850, 850), Paint()..isAntiAlias = true..style = PaintingStyle.fill..color = Colors.white);
+  canvas.drawImage(qr, Offset(25, 25), Paint());
+
+  final pic = await pictureRecorder.endRecording().toImage(850, 850);
+  final bytes = await pic.toByteData(format: ui.ImageByteFormat.png);
+
+  ImageGallerySaver.saveImage(Uint8List.view(bytes.buffer));
+}
+```
+
+
+### 输入限制
+
+```dart
+FilteringTextInputFormatter.deny(RegExp('[ ]')) // 不能输入空格
+FilteringTextInputFormatter(RegExp('[0-9.]'), allow: true) // 只能输入数字和小数点
+
+DigitFilter(digit: 2) // 小数点后只能有两位
+class DigitFilter extends TextInputFormatter {
+  static const defaultDouble = 0.001;
+
+  // 允许的小数位数，-1代表不限制位数
+  int digit;
+
+  DigitFilter({this.digit = -1});
+  static double strToFloat(String str, [double defaultValue = defaultDouble]) {
+    try {
+      return double.parse(str);
+    } catch (e) {
+      return defaultValue;
+    }
+  }
+
+  // 获取目前的小数位数
+  static int getValueDigit(String value) {
+    if (value.contains(".")) {
+      return value.split(".")[1].length;
+    } else {
+      return -1;
+    }
+  }
+
+  @override
+  TextEditingValue formatEditUpdate(TextEditingValue oldValue, TextEditingValue newValue) {
+    String value = newValue.text;
+    int selectionIndex = newValue.selection.end;
+    if (value == ".") {
+      value = "0.";
+      selectionIndex++;
+    } else if (value == "-") {
+      value = "-";
+      selectionIndex++;
+    } else if (value != "" && value != defaultDouble.toString() && strToFloat(value, defaultDouble) == defaultDouble || getValueDigit(value) > digit) {
+      value = oldValue.text;
+      selectionIndex = oldValue.selection.end;
+    }
+
+    return TextEditingValue(
+      text: value,
+      selection: TextSelection.collapsed(offset: selectionIndex),
+    );
+  }
+}
+```
+
 ## 获取某年某月有多少天
 
 ```js
