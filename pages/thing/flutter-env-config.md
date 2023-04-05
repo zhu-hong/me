@@ -52,3 +52,6 @@ flutter doctor
 切换flutter版本，打开vscode切换到你想要的版本的git tag，然后再运行一遍`flutter doctor`
 
 卡在 *Running Gradle task 'assembleDebug'...* 属于正常现象，你可能得使用科学上网解决
+
+## 尝试一种不用Android Studio的方法
+https://www.androiddevtools.cn/
