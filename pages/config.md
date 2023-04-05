@@ -46,11 +46,8 @@ node_sqlite3_binary_host_mirror="https://cdn.npmmirror.com/binaries/sqlite3"
   "window.restoreWindows": "none",
   "editor.cursorSmoothCaretAnimation": "on",
   "editor.cursorStyle": "block",
-  "editor.guides.bracketPairs": "active",
   "editor.bracketPairColorization.enabled": true,
-  "git.confirmSync": false,
-  "explorer.confirmDelete": false,
-  "javascript.updateImportsOnFileMove.enabled": "always",
+  "editor.guides.bracketPairs": "active",
   "[html]": {
     "editor.language.colorizedBracketPairs": [
       ["{","}"],
@@ -63,8 +60,6 @@ node_sqlite3_binary_host_mirror="https://cdn.npmmirror.com/binaries/sqlite3"
       "args": ["-nolog"],
     },
   },
-  "workbench.iconTheme": "vscode-icons",
-  "workbench.colorTheme": "GitHub Dark Default",
   // updated 2022-09-30 04:30
   // https://github.com/antfu/vscode-file-nesting-config
   "explorer.fileNesting.enabled": true,
