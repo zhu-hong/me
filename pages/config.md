@@ -177,16 +177,23 @@ node_sqlite3_binary_host_mirror="https://cdn.npmmirror.com/binaries/sqlite3"
 
 ## pwsh
 ```ps1
-$env:HTTP_PROXY="http://127.0.0.1:7890"
-$env:HTTPS_PROXY="http://127.0.0.1:7890"
-
 oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH/star.omp.json" | Invoke-Expression
 
-Set-PSReadLineOption -PredictionViewStyle ListView
+Import-Module posh-git
 
+Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
 Set-PSReadlineKeyHandler -Key UpArrow -Function HistorySearchBackward
 Set-PSReadlineKeyHandler -Key DownArrow -Function HistorySearchForward
-Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
+
+function proxy {
+	Set-Item ENV:HTTP_PROXY "http://127.0.0.1:7890"
+	Set-Item ENV:HTTPS_PROXY "http://127.0.0.1:7890"
+}
+
+function unproxy {
+  Remove-Item ENV:HTTP_PROXY
+  Remove-Item ENV:HTTPS_PROXY
+}
 ```
 
 ## zsh
