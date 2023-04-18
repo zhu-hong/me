@@ -2,6 +2,7 @@
 title: 编写一个小而美的前端库
 desc: 记录从零开始编写一个使用体验好的前端库
 date: "2023-4-17 14:50"
+update: "2023-4-18 14:02"
 ---
 
 [[toc]]
@@ -36,7 +37,7 @@ date: "2023-4-17 14:50"
 ```sh
 md qr
 cd qr
-npm init -y --scope=@<你的npm用户名> # 包名会是@<你的npm用户名>/qr，这样看起来逼格高点🌝
+npm init -y --scope=@你的npm用户名 # 包名会是@你的npm用户名/qr，这样看起来逼格高点🌝
 ```
 
 修改生成的package.json如下
@@ -90,12 +91,53 @@ pnpm add vue vue-demi unbuild vite -D # 加上 -D 的包，开发者安装你这
 
 [vue-demi usage](https://github.com/vueuse/vue-demi#usage)
 
-### 配置开发环境
+## 编码打包
 
-这里不详述了
+见仓库
 
-## 编码
+打包产物如下
 
-```ts
+```sh
+ℹ Building @zhu-hong/qr
+✔ Build succeeded for qr
+  dist/index.cjs (total size: 37.4 kB, chunk size: 37.4 kB, exports: QrCode, generateModules)
+  dist/index.mjs (total size: 37.3 kB, chunk size: 37.3 kB, exports: QrCode, generateModules)
 
+Σ Total dist size (byte size): 76.4 kB
 ```
+
+一共生成了三个文件
+
++ `index.cjs` CommonJS规范
++ `index.cjs` ESM规范
++ `index.d.ts` 类型文件
+
+## 完善package.json
+
+```json
+{
+  // 告诉npm上传哪些文件（夹），下面表示只上传dist文件夹，还有一些默认的如README.md
+  "files": [
+    "dist"
+  ],
+  // 默认导入文件
+  "main": "./dist/index.cjs",
+  // 使用ESM导文件
+  "module": "./dist/index.mjs",
+  // 类型文件
+  "types": "./dist/index.d.ts",
+  // exports map 分包用 这个项目产物这里只有一个跟路径所以没多大意义
+  "exports": {
+    ".": {
+      "default": "./dist/index.cjs",
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.mjs",
+      "types": "./dist/index.d.ts"
+    }
+  },
+}
+```
+
+## 参考
+
+> [qrcode.vue](https://github.com/scopewu/qrcode.vue)
