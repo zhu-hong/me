@@ -155,3 +155,22 @@ function getDates(year, month) {
 ```sh
 adb shell pm uninstall -k --user 0 com.miui.voiceassist # 卸载小爱同学
 ```
+
+## svg圆环进度
+
+```html
+<svg width="400" height="400" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="200" cy="200" r="190" fill="none" stroke="#efefef" stroke-width="20" />
+  <circle
+    cx="200"
+    cy="200"
+    r="190"
+    fill="none"
+    stroke="#0b58d2"
+    stroke-width="20"
+    stroke-linecap="round"
+    :stroke-dasharray="`${Math.PI * 190 * 2 * range / 100} ${Math.ceil(Math.PI * 380)}`"
+    transform="matrix(0,-1,1,0,0,400)"
+  />
+</svg>
+```
