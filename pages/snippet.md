@@ -174,3 +174,9 @@ adb shell pm uninstall -k --user 0 com.miui.voiceassist # 卸载小爱同学
   />
 </svg>
 ```
+
+## 检查package.json哪些包能更新
+
+```sh
+pnpm outdated
+```
