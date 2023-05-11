@@ -22,15 +22,25 @@ const routes = autoRoutes.map((i) => {
   }
 })
 
-const scrollBehavior = (_to: any, _from: any, savedPosition: any) => {
-  if (savedPosition) return savedPosition
-
-  return { top: 0 }
-}
-
 export const createApp = ViteSSG(
   App,
-  { routes, scrollBehavior },
+  {
+    routes,
+    scrollBehavior(_to, _from, savedPosition) {
+      if (savedPosition) {
+        document.body.scrollTo(savedPosition)
+        return savedPosition
+      }
+      else {
+        document.body.scrollTo({
+          top: 0,
+        })
+        return {
+          top: 0,
+        }
+      }
+    },
+  },
   ({ router, isClient }) => {
     dayjs.extend(LocalizedFormat)
 
