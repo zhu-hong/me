@@ -6,6 +6,16 @@ date: "2023-2-24 23:36"
 
 [[toc]]
 
+## 尝试一种不用Android Studio的方法
+
++ 安装[flutter sdk](https://docs.flutter.dev/get-started/install)
+
++ 安装[java](https://www.injdk.cn) `JAVA_HOME`
+
++ 安装[sdk-tools](https://www.androiddevtools.cn/#sdk-tools) `ANDROID_HOME`
+
++ 安装[cmdline-tools](https://developer.android.com/studio) `ANDROID_HOME/cmdline-tools/${version}`
+
 ## 资源准备
 
 能不能科学上网不太重要，基本上都有镜像，我此时的Flutter版本为`3.7.4`
@@ -52,6 +62,3 @@ flutter doctor
 切换flutter版本，打开vscode切换到你想要的版本的git tag，然后再运行一遍`flutter doctor`
 
 卡在 *Running Gradle task 'assembleDebug'...* 属于正常现象，你可能得使用科学上网解决
-
-## 尝试一种不用Android Studio的方法
-https://www.androiddevtools.cn/
