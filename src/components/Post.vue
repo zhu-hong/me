@@ -156,7 +156,7 @@ html:not(.dark) .shiki:first-child {
 	a {
 		font-weight: 500;
 		color: var(--lk-color);
-		transition: all ease-in-out .3s;
+		transition: all ease-in-out .4s;
 		border-bottom-style: solid;
 		border-bottom-width: 1px;
 		border-bottom-color: var(--lkb-color);
