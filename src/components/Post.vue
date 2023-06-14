@@ -1,7 +1,8 @@
-<script setup lang='ts'>
+<script setup>
 import { ref } from 'vue'
 import dayjs from 'dayjs'
-import { useHead } from '@vueuse/head';
+import { useHead } from '@vueuse/head'
+import { onMounted } from 'vue'
 
 const { frontmatter } = defineProps({
   frontmatter: {
@@ -11,28 +12,34 @@ const { frontmatter } = defineProps({
 })
 
 const date = dayjs(frontmatter.date).format('YYYY-MM-DD HH:MM')
-
 const update = ref('')
 
-if(frontmatter.update) {
-	update.value = dayjs(frontmatter.update).fromNow()
-}
-
-useHead({
-  meta: [
-    {
-      name: 'description',
-      content: frontmatter.desc,
-    },
-  ],
+onMounted(() => {
+	if(frontmatter.update) {
+		update.value = dayjs(frontmatter.update).fromNow()
+	}
+	
+	if(frontmatter.desc) {
+		useHead({
+			meta: [
+				{
+					name: 'description',
+					content: frontmatter.desc,
+				},
+				{
+					name: 'og:description',
+					content: frontmatter.desc,
+				},
+			],
+		})
+	}
 })
+
 </script>
 
 <template>
-  <div v-if="frontmatter.display ?? frontmatter.title" class="prose">
-    <h1>
-      {{ frontmatter.display ?? frontmatter.title }}
-    </h1>
+  <div class="prose">
+    <h1>{{ frontmatter.title }}</h1>
     <p v-if="frontmatter.date" class="opacity-50 mb-4 flex items-center gap-2">
 			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 32 32"><path fill="currentColor" d="M16 30a14 14 0 1 1 14-14a14 14 0 0 1-14 14Zm0-26a12 12 0 1 0 12 12A12 12 0 0 0 16 4Z"/><path fill="currentColor" d="M20.59 22L15 16.41V7h2v8.58l5 5.01L20.59 22z"/></svg>
 			<span>{{ date }}</span>
@@ -41,12 +48,12 @@ useHead({
 			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 32 32"><path fill="currentColor" d="m27 25.586l-2-2V21h-2v3.414L25.586 27L27 25.586z"/><path fill="currentColor" d="M24 31a7 7 0 1 1 7-7a7.008 7.008 0 0 1-7 7zm0-12a5 5 0 1 0 5 5a5.005 5.005 0 0 0-5-5zm-8 9A12.013 12.013 0 0 1 4 16H2a14.016 14.016 0 0 0 14 14zM12 8H7.078A11.984 11.984 0 0 1 28 16h2A13.978 13.978 0 0 0 6 6.234V2H4v8h8z"/></svg>
 			<span>更新于：{{ update }}</span>
     </p>
-    <p v-if="frontmatter.desc" class="opacity-50 italic">
+    <p v-if="frontmatter.path !== '/' && frontmatter.desc" class="opacity-50 italic">
       {{ frontmatter.desc }}
     </p>
   </div>
-  <article ref="content">
-    <slot />
+  <article>
+    <slot></slot>
   </article>
 </template>
 

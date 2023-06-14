@@ -10,9 +10,8 @@ import markdown from 'vite-plugin-vue-markdown'
 import shiki from 'markdown-it-shiki'
 import anchor from 'markdown-it-anchor'
 import link from 'markdown-it-link-attributes'
-// @ts-expect-error missing types
 import toc from 'markdown-it-table-of-contents'
-import { slugify } from './src/scripts/slugify'
+import { slugify } from './src/utils/slugify'
 import components from 'unplugin-vue-components/vite'
 import nested from 'postcss-nested'
 
@@ -84,7 +83,7 @@ export default defineConfig({
         })
 
         md.use(link, {
-          matcher: (link: string) => /^https?:\/\//.test(link),
+          matcher: (link) => /^https?:\/\//.test(link),
           attrs: {
             target: '_blank',
             rel: 'noopener',
