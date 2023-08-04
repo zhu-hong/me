@@ -180,3 +180,10 @@ adb shell pm uninstall -k --user 0 com.miui.voiceassist # 卸载小爱同学
 ```sh
 pnpm outdated
 ```
+
+## js对象剔除某些属性组成另一个对象
+
+```js
+// props是一个新对象,和obj相比少了value属性
+const { value, ...props } = obj
+```
