@@ -5,7 +5,7 @@ export const SITE: Site = {
   author: "Jimmy",
   profile: "https://me.yanhong.xyz/",
   desc: "hi, im jimmy, im a software engineer, its my personal website, im record something here.",
-  title: "Jimmy's Website",
+  title: "Jimmy",
   lightAndDarkMode: true,
   postPerIndex: 4,
   postPerPage: 3,
