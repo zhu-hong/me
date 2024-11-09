@@ -48,7 +48,9 @@ const shareLinks = [
           className="link-button"
           title={social.linkTitle}
         >
-          <Fragment set:html={socialIcons[social.name]} />
+          <Fragment
+            set:html={socialIcons[social.name as keyof typeof socialIcons]}
+          />
           <span class="sr-only">{social.linkTitle}</span>
         </LinkButton>
       ))

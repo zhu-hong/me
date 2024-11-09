@@ -57,7 +57,61 @@ window.onload = () => {
     // now this script can find and listen for clicks on the control
     document.querySelector("#theme-btn")?.addEventListener("click", () => {
       themeValue = themeValue === "light" ? "dark" : "light";
-      setPreference();
+
+      if (!document.startViewTransition) {
+        setPreference();
+        return;
+      }
+
+      const styleEl = document.getElementById("view-transition");
+      styleEl.textContent = `
+        :root {
+          --expo-out: linear(
+            0 0%, 0.1684 2.66%, 0.3165 5.49%,
+            0.446 8.52%, 0.5581 11.78%,
+            0.6535 15.29%, 0.7341 19.11%,
+            0.8011 23.3%, 0.8557 27.93%,
+            0.8962 32.68%, 0.9283 38.01%,
+            0.9529 44.08%, 0.9711 51.14%,
+            0.9833 59.06%, 0.9915 68.74%, 1 100%
+          );
+        }
+        
+        ::view-transition-group(root) {
+          animation-duration: 700ms;
+          animation-timing-function: var(--expo-out);
+        }
+        ::view-transition-new(root) {
+          animation-name: reveal-light;
+        }
+        ::view-transition-old(root),
+        [data-theme=dark]::view-transition-old(root) {
+          animation: none;
+          z-index: -1;
+        }
+        [data-theme=dark]::view-transition-new(root) {
+          animation-name: reveal-dark;
+        }
+        @keyframes reveal-dark {
+          from {
+            clip-path: polygon(171% 50%, 50% -71%, 50% -71%, 171% 50%);
+          }
+          to {
+            clip-path: polygon(171% 50%, 50% -71%, -71% 50%, 50% 171%);
+          }
+        }
+        @keyframes reveal-light {
+          from {
+            clip-path: polygon(50% 171%, -71% 50%, -71% 50%, 50% 171%);
+          }
+          to {
+            clip-path: polygon(50% 171%, -71% 50%, 50% -71%, 171% 50%);
+          }
+        }
+      `;
+      document.startViewTransition(() => {
+        setPreference();
+      });
     });
   }
 
