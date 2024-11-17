@@ -10,8 +10,7 @@
     "sync": "astro sync",
     "astro": "astro",
     "format:check": "prettier --check . --plugin=prettier-plugin-astro",
-    "format": "prettier --write . --plugin=prettier-plugin-astro",
-    "lint": "eslint ."
+    "format": "prettier --write . --plugin=prettier-plugin-astro"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.3",
@@ -33,16 +32,10 @@
     "@tailwindcss/typography": "^0.5.15",
     "@types/lodash.kebabcase": "^4.1.9",
     "@types/react": "^18.3.6",
-    "@typescript-eslint/parser": "^8.5.0",
-    "astro-eslint-parser": "^1.0.3",
-    "eslint": "^9.10.0",
-    "eslint-plugin-astro": "^1.2.4",
-    "globals": "^15.9.0",
     "prettier": "^3.3.3",
     "prettier-plugin-astro": "^0.14.1",
     "prettier-plugin-tailwindcss": "^0.6.6",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "typescript-eslint": "^8.5.0"
+    "react-dom": "^18.3.1"
   }
 }
